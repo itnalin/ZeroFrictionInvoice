@@ -27,7 +27,7 @@ namespace ZeroFrictionInvoice.Domain.Services
             if (invoiceModel is null)
                 throw new Exception();
 
-            var invoice = await dbContext.Invoices.FirstAsync(x => x.InvoiceNumber == invoiceModel.InvoiceNumber);
+            var invoice = await dbContext.Invoices.Where(x => x.InvoiceNumber == invoiceModel.InvoiceNumber).FirstOrDefaultAsync();
 
             if (invoice is not null)
                 throw new BusinessException(Constants.ErrorCode.InvoiceExisting, Constants.Errors.InvoiceExisting);
@@ -42,7 +42,7 @@ namespace ZeroFrictionInvoice.Domain.Services
 
         public async Task UpdateInvoiceAsync(string invoiceNumber, InvoiceModel invoiceModel)
         {
-            var invoice = await dbContext.Invoices.FirstAsync(x => x.InvoiceNumber == invoiceNumber);
+            var invoice = await dbContext.Invoices.Where(x => x.InvoiceNumber == invoiceNumber).FirstOrDefaultAsync();
 
             if (invoice is null)
                 throw new BusinessException(Constants.ErrorCode.InvoiceNotFound, Constants.Errors.InvoiceNotFound);
@@ -50,7 +50,7 @@ namespace ZeroFrictionInvoice.Domain.Services
             // when an invoice number is going to be modified, it will check is there is an invoice with modified invoice numner
             if(invoiceNumber != invoiceModel.InvoiceNumber)
             {
-                var existingInvoice = await dbContext.Invoices.FirstAsync(x => x.InvoiceNumber == invoiceModel.InvoiceNumber);
+                var existingInvoice = await dbContext.Invoices.Where(x => x.InvoiceNumber == invoiceModel.InvoiceNumber).FirstOrDefaultAsync();
 
                 if(existingInvoice is not null)
                     throw new BusinessException(Constants.ErrorCode.InvoiceExisting, Constants.Errors.InvoiceExisting);
@@ -75,7 +75,7 @@ namespace ZeroFrictionInvoice.Domain.Services
             if (string.IsNullOrEmpty(invoiceNumber))
                 throw new BusinessException(Constants.ErrorCode.InvalidInvoiceNumber, Constants.Errors.InvalidInvoiceNumber);
 
-            var invoice = await dbContext.Invoices.Where(x => x.InvoiceNumber == invoiceNumber).FirstAsync();
+            var invoice = await dbContext.Invoices.Where(x => x.InvoiceNumber == invoiceNumber).FirstOrDefaultAsync();
 
             var getInvoices = mapper.Map<Invoice, InvoiceModel>(invoice);
 
