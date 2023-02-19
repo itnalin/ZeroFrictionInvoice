@@ -1,0 +1,17 @@
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\bin\Debug\net6.0\ZeroFrictionInvoice.Domain.deps.json
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\bin\Debug\net6.0\ZeroFrictionInvoice.Domain.dll
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\bin\Debug\net6.0\ZeroFrictionInvoice.Domain.pdb
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\obj\Debug\net6.0\ZeroFrictionInvoice.Domain.csproj.AssemblyReference.cache
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\obj\Debug\net6.0\ZeroFrictionInvoice.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\obj\Debug\net6.0\ZeroFrictionInvoice.Domain.AssemblyInfoInputs.cache
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\obj\Debug\net6.0\ZeroFrictionInvoice.Domain.AssemblyInfo.cs
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\obj\Debug\net6.0\ZeroFrictionInvoice.Domain.csproj.CoreCompileInputs.cache
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\obj\Debug\net6.0\ZeroFrictionInvoice.Domain.dll
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\obj\Debug\net6.0\refint\ZeroFrictionInvoice.Domain.dll
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\obj\Debug\net6.0\ZeroFrictionInvoice.Domain.pdb
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\obj\Debug\net6.0\ref\ZeroFrictionInvoice.Domain.dll
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\bin\Debug\net6.0\ZeroFrictionInvoice.Infra.dll
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\bin\Debug\net6.0\ZeroFrictionInvoice.Models.dll
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\bin\Debug\net6.0\ZeroFrictionInvoice.Infra.pdb
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\bin\Debug\net6.0\ZeroFrictionInvoice.Models.pdb
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Domain\obj\Debug\net6.0\ZeroFrictionInvoice.Domain.csproj.CopyComplete

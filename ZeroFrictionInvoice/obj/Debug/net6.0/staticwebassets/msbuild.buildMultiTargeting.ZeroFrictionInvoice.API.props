@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ZeroFrictionInvoice.API.props" />
+</Project>

@@ -1,0 +1,12 @@
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Test.Utilities\bin\Debug\net6.0\ZeroFrictionInvoice.Test.Utilities.deps.json
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Test.Utilities\bin\Debug\net6.0\ZeroFrictionInvoice.Test.Utilities.dll
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Test.Utilities\bin\Debug\net6.0\ZeroFrictionInvoice.Test.Utilities.pdb
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Test.Utilities\obj\Debug\net6.0\ZeroFrictionInvoice.Test.Utilities.csproj.AssemblyReference.cache
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Test.Utilities\obj\Debug\net6.0\ZeroFrictionInvoice.Test.Utilities.GeneratedMSBuildEditorConfig.editorconfig
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Test.Utilities\obj\Debug\net6.0\ZeroFrictionInvoice.Test.Utilities.AssemblyInfoInputs.cache
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Test.Utilities\obj\Debug\net6.0\ZeroFrictionInvoice.Test.Utilities.AssemblyInfo.cs
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Test.Utilities\obj\Debug\net6.0\ZeroFrictionInvoice.Test.Utilities.csproj.CoreCompileInputs.cache
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Test.Utilities\obj\Debug\net6.0\ZeroFrictionInvoice.Test.Utilities.dll
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Test.Utilities\obj\Debug\net6.0\refint\ZeroFrictionInvoice.Test.Utilities.dll
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Test.Utilities\obj\Debug\net6.0\ZeroFrictionInvoice.Test.Utilities.pdb
+D:\rnd\ZeroFrictionInvoice\ZeroFrictionInvoice.Test.Utilities\obj\Debug\net6.0\ref\ZeroFrictionInvoice.Test.Utilities.dll
