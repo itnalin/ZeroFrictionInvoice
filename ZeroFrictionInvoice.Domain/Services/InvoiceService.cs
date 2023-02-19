@@ -47,6 +47,15 @@ namespace ZeroFrictionInvoice.Domain.Services
             if (invoice is null)
                 throw new BusinessException(Constants.ErrorCode.InvoiceNotFound, Constants.Errors.InvoiceNotFound);
 
+            // when an invoice number is going to be modified, it will check is there is an invoice with modified invoice numner
+            if(invoiceNumber != invoiceModel.InvoiceNumber)
+            {
+                var existingInvoice = await dbContext.Invoices.FirstAsync(x => x.InvoiceNumber == invoiceModel.InvoiceNumber);
+
+                if(existingInvoice is not null)
+                    throw new BusinessException(Constants.ErrorCode.InvoiceExisting, Constants.Errors.InvoiceExisting);
+            }
+
             mapper.Map<InvoiceModel, Invoice>(invoiceModel, invoice);          
 
             dbContext.SaveChanges();

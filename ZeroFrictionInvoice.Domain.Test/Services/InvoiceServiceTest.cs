@@ -74,25 +74,56 @@ namespace ZeroFrictionInvoice.Domain.Test.Services
             result.InvoiceLines.Count().Should().Be(param.InvoiceLines.Count());
         }
 
+        [Fact]
+        public async Task UpdateInvoice_ShouldUpdateInvoice()
+        {
+
+            //Arrange
+            var dbContext = inMemoryDatabaseFactory.Create("InvoiceInMemoryDb");
+
+            IInvoiceService invoice = new InvoiceService(dbContext, _mapper);
+            SeedDatabase(dbContext);
+
+            var param = new InvoiceModel()
+            {
+                InvoiceNumber = "INV205",
+                Date = DateTime.UtcNow,
+                Description = "Invoice 205 modified",
+                TotalAmount = 1000,
+                InvoiceLines = new HashSet<InvoiceLineModel>()
+                        {
+                            new InvoiceLineModel()
+                            {
+                                Amount= 150,
+                                Quantity= 100,
+                                UnitPrice= 100,
+                                LineAmount= 25
+                            }
+                        }
+            };
+
+            //Act
+            await invoice.CreateInvoiceAsync(param);
+            var result = await invoice.GetInvoiceByNumberAsync(param.InvoiceNumber);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.Date.Should().Be(param.Date);
+            result.Description.Should().Be(param.Description);
+            result.TotalAmount.Should().Be(param.TotalAmount);
+            result.InvoiceLines.Should().NotBeNull();
+            result.InvoiceLines.Count().Should().Be(param.InvoiceLines.Count());
+        }
+
         private void SeedDatabase(InvoiceContext dbContext)
         {
-            // SupplierDetail            
-            //dbContext.Suppliers.AddAsync(new SupplierDetail()
-            //{
-            //    Id = "5645321H-06b9-4419-9c05-d56a9401c82b",
-            //    ReferenceNumber = 101,
-            //    StatusId = (int)SupplierStatus.Registered,
-            //    ExternalSupplierCode = "Supplier123",
-            //    CompanyDetails = new SupplierCompanyDetails() { CompanyName = "abc2" }
-            //});
-
             dbContext.AddAsync(
                 new Models.Invoice
                 {
                     Id = Guid.NewGuid().ToString().ToLower(),
-                    InvoiceNumber = Guid.NewGuid().ToString().ToLower(),
+                    InvoiceNumber = "INV205",
                     Date = DateTime.UtcNow,
-                    Description = "test100",
+                    Description = "Invoice 205",
                     TotalAmount = 100,
                     InvoiceLines = new HashSet<Models.InvoiceLine>()
                     {
