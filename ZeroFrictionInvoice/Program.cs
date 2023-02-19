@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
+using ZeroFrictionInvoice.API.Extensions;
 using ZeroFrictionInvoice.Domain.Services;
 using ZeroFrictionInvoice.Infra;
 using ZeroFrictionInvoice.Models.Mapping;
@@ -43,6 +44,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.ConfigureCustomExceptionMiddleware();
 
 app.UseHttpsRedirection();
 

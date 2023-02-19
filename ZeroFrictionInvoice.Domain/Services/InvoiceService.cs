@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZeroFrictionInvoice.Domain.Exceptions;
 using ZeroFrictionInvoice.Infra;
 using ZeroFrictionInvoice.Models;
 using ZeroFrictionInvoice.Models.Dto;
@@ -22,7 +23,14 @@ namespace ZeroFrictionInvoice.Domain.Services
         }
 
         public async Task CreateInvoiceAsync(InvoiceModel invoiceModel)
-        {           
+        {
+            if (invoiceModel is null)
+                throw new Exception();
+
+            var invoice = await dbContext.Invoices.FirstAsync(x => x.InvoiceNumber == invoiceModel.InvoiceNumber);
+
+            if (invoice is not null)
+                throw new BusinessException(Constants.ErrorCode.InvoiceExisting, Constants.Errors.InvoiceExisting);
 
             await dbContext.AddAsync(
                 mapper.Map<InvoiceModel, Invoice>(invoiceModel, new Invoice() { 
@@ -36,9 +44,8 @@ namespace ZeroFrictionInvoice.Domain.Services
         {
             var invoice = await dbContext.Invoices.FirstAsync(x => x.InvoiceNumber == invoiceNumber);
 
-
             if (invoice is null)
-                throw new Exception();
+                throw new BusinessException(Constants.ErrorCode.InvoiceNotFound, Constants.Errors.InvoiceNotFound);
 
             mapper.Map<InvoiceModel, Invoice>(invoiceModel, invoice);          
 
@@ -57,7 +64,7 @@ namespace ZeroFrictionInvoice.Domain.Services
         public async Task<InvoiceModel> GetInvoiceByNumberAsync(string invoiceNumber)
         {
             if (string.IsNullOrEmpty(invoiceNumber))
-                throw new Exception();
+                throw new BusinessException(Constants.ErrorCode.InvalidInvoiceNumber, Constants.Errors.InvalidInvoiceNumber);
 
             var invoice = await dbContext.Invoices.Where(x => x.InvoiceNumber == invoiceNumber).FirstAsync();
 
