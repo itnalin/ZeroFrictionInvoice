@@ -13,9 +13,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeroFrictionInvoice.Models"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{125235BD-993D-4887-B2A1-DA568D5058E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroFrictionInvoice.Test.Utilities", "ZeroFrictionInvoice.Test.Utilities\ZeroFrictionInvoice.Test.Utilities.csproj", "{88E13AED-F794-4531-8147-1B731E273419}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeroFrictionInvoice.Test.Utilities", "ZeroFrictionInvoice.Test.Utilities\ZeroFrictionInvoice.Test.Utilities.csproj", "{88E13AED-F794-4531-8147-1B731E273419}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroFrictionInvoice.Domain.Test", "ZeroFrictionInvoice.Domain.Test\ZeroFrictionInvoice.Domain.Test.csproj", "{79360179-79D9-4ECC-B6E0-3D54E77B6ADD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeroFrictionInvoice.Domain.Test", "ZeroFrictionInvoice.Domain.Test\ZeroFrictionInvoice.Domain.Test.csproj", "{79360179-79D9-4ECC-B6E0-3D54E77B6ADD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E03F597B-93BB-49B5-AE5A-11D274D2723B}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
