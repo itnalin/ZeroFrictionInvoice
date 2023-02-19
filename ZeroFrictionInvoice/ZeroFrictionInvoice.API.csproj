@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ZeroFrictionInvoice.Domain\ZeroFrictionInvoice.Domain.csproj" />
-    <ProjectReference Include="..\ZeroFrictionInvoice.Infra\ZeroFrictionInvoice.Infra.csproj" />
   </ItemGroup>
 
 </Project>
