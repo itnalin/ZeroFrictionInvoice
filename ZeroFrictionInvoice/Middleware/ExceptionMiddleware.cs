@@ -50,7 +50,7 @@ namespace ZeroFrictionInvoice.API.Middleware
             var message = exception switch
             {
                 BusinessException => exception.Message,
-                _ => "Error from the supplier portal business logic"
+                _ => "Error from the invoice system business logic"
             };
 
             await context.Response.WriteAsync(new ErrorDetails()
