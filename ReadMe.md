@@ -33,3 +33,6 @@
  - xUnit has been used to build the unit testing project.
      InvoiceServiceTest class difines the unit test scenarios.
      ZeroFrictionInvoice.Test.Utilities project handles the InMemoryDatabase factory.
+
+ - Postman workspace invite link
+   https://app.getpostman.com/join-team?invite_code=7dd92cc6eb300455a9f7caeded07b4ca&target_code=ca1f661a8737251191172613ee2e9252
