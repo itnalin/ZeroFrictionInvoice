@@ -10,9 +10,9 @@ namespace ZeroFrictionInvoice.Domain.Services
 {
     public interface IInvoiceService
     {
-        Task CreateInvoiceAsync(InvoiceModel invoiceModel);
-        Task UpdateInvoiceAsync(string invoiceNumber, InvoiceModel invoiceModel);
-        Task<List<InvoiceModel>> GetAllInvoicesAsync();
-        Task<InvoiceModel> GetInvoiceByNumberAsync(string invoiceNumber);
+        Task CreateInvoiceAsync(InvoiceSaveModel invoiceSaveModel);
+        Task UpdateInvoiceAsync(string invoiceNumber, InvoiceSaveModel invoiceSaveModel);
+        Task<List<InvoiceGetModel>> GetAllInvoicesAsync();
+        Task<InvoiceGetModel> GetInvoiceByNumberAsync(string invoiceNumber);
     }
 }

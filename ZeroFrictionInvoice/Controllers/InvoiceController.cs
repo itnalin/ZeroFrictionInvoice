@@ -20,8 +20,8 @@ namespace ZeroFrictionInvoice.API.Controllers
         }
 
         [HttpGet, Route("{number}")]
-        [Produces("application/json", Type = typeof(InvoiceModel))]
-        [ProducesResponseType(typeof(InvoiceModel), StatusCodes.Status200OK)]
+        [Produces("application/json", Type = typeof(InvoiceGetModel))]
+        [ProducesResponseType(typeof(InvoiceGetModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetInvoiceByNumberAsync(string number)
         {
@@ -29,8 +29,8 @@ namespace ZeroFrictionInvoice.API.Controllers
         }
 
         [HttpGet, Route("all")]
-        [Produces("application/json", Type = typeof(List<InvoiceModel>))]
-        [ProducesResponseType(typeof(InvoiceModel), StatusCodes.Status200OK)]
+        [Produces("application/json", Type = typeof(List<InvoiceGetModel>))]
+        [ProducesResponseType(typeof(InvoiceGetModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetAllInvoicesAsync()
         {
@@ -40,7 +40,7 @@ namespace ZeroFrictionInvoice.API.Controllers
         [HttpPost]        
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> CreateInvoiceAsync(InvoiceModel invoice)
+        public async Task<IActionResult> CreateInvoiceAsync(InvoiceSaveModel invoice)
         {
             await _invoiceService.CreateInvoiceAsync(invoice);
 
@@ -50,7 +50,7 @@ namespace ZeroFrictionInvoice.API.Controllers
         [HttpPut, Route("{invoiceNumber}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> UpdateInvoiceAsync(string invoiceNumber, [FromBody] InvoiceModel invoice)
+        public async Task<IActionResult> UpdateInvoiceAsync(string invoiceNumber, [FromBody] InvoiceSaveModel invoice)
         {
             await _invoiceService.UpdateInvoiceAsync(invoiceNumber, invoice);
 

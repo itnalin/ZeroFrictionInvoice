@@ -12,7 +12,7 @@ namespace ZeroFrictionInvoice.Models
         public string InvoiceNumber { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
-        public int TotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
         public ICollection<InvoiceLine> InvoiceLines { get; set; }
     }
 }

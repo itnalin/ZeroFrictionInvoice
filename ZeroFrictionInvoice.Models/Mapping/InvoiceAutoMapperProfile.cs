@@ -12,15 +12,17 @@ namespace ZeroFrictionInvoice.Models.Mapping
     {
         public InvoiceAutoMapperProfile()
         {
-            CreateMap<InvoiceModel, Invoice>()
+            CreateMap<InvoiceSaveModel, Invoice>()
                 .ForMember(dest => dest.InvoiceNumber, opt => opt.MapFrom(src => src.InvoiceNumber))
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date))
-                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
-                .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.TotalAmount));
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description));                
 
-            CreateMap<InvoiceLineModel, InvoiceLine>();
-            CreateMap<Invoice, InvoiceModel>();
-            CreateMap<InvoiceLine, InvoiceLineModel>();
+            CreateMap<InvoiceLineSaveModel, InvoiceLine>();
+
+            CreateMap<Invoice, InvoiceGetModel>();
+
+            CreateMap<InvoiceLine, InvoiceLineGetModel>();           
+            
         }
     }
 }

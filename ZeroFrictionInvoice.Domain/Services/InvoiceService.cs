@@ -22,25 +22,38 @@ namespace ZeroFrictionInvoice.Domain.Services
             this.mapper = mapper;
         }
 
-        public async Task CreateInvoiceAsync(InvoiceModel invoiceModel)
+        public async Task CreateInvoiceAsync(InvoiceSaveModel invoiceSaveModel)
         {
-            if (invoiceModel is null)
+            if (invoiceSaveModel is null)
                 throw new Exception();
 
-            var invoice = await dbContext.Invoices.Where(x => x.InvoiceNumber == invoiceModel.InvoiceNumber).FirstOrDefaultAsync();
+            var invoice = await dbContext.Invoices.Where(x => x.InvoiceNumber == invoiceSaveModel.InvoiceNumber).FirstOrDefaultAsync();
 
             if (invoice is not null)
                 throw new BusinessException(Constants.ErrorCode.InvoiceExisting, Constants.Errors.InvoiceExisting);
 
-            await dbContext.AddAsync(
-                mapper.Map<InvoiceModel, Invoice>(invoiceModel, new Invoice() { 
-                    Id = Guid.NewGuid().ToString().ToLower() 
-                }));            
+            var mappedInvoice = mapper.Map<InvoiceSaveModel, Invoice>(invoiceSaveModel, new Invoice()
+            {
+                Id = Guid.NewGuid().ToString().ToLower()                
+            });
 
-                await dbContext.SaveChangesAsync();            
+            // Calculate Line Amount and Total Amount
+            decimal total = 0;
+            foreach(var line in mappedInvoice.InvoiceLines)
+            {
+                line.LineAmount = line.Quantity * line.UnitPrice;
+                line.Amount = line.LineAmount;
+                total += line.LineAmount;
+            }
+
+            mappedInvoice.TotalAmount = total;
+
+            await dbContext.AddAsync(mappedInvoice);            
+
+            await dbContext.SaveChangesAsync();            
         }
 
-        public async Task UpdateInvoiceAsync(string invoiceNumber, InvoiceModel invoiceModel)
+        public async Task UpdateInvoiceAsync(string invoiceNumber, InvoiceSaveModel invoiceSaveModel)
         {
             var invoice = await dbContext.Invoices.Where(x => x.InvoiceNumber == invoiceNumber).FirstOrDefaultAsync();
 
@@ -48,36 +61,47 @@ namespace ZeroFrictionInvoice.Domain.Services
                 throw new BusinessException(Constants.ErrorCode.InvoiceNotFound, Constants.Errors.InvoiceNotFound);
 
             // when an invoice number is going to be modified, it will check is there is an invoice with modified invoice numner
-            if(invoiceNumber != invoiceModel.InvoiceNumber)
+            if(invoiceNumber != invoiceSaveModel.InvoiceNumber)
             {
-                var existingInvoice = await dbContext.Invoices.Where(x => x.InvoiceNumber == invoiceModel.InvoiceNumber).FirstOrDefaultAsync();
+                var existingInvoice = await dbContext.Invoices.Where(x => x.InvoiceNumber == invoiceSaveModel.InvoiceNumber).FirstOrDefaultAsync();
 
                 if(existingInvoice is not null)
                     throw new BusinessException(Constants.ErrorCode.InvoiceExisting, Constants.Errors.InvoiceExisting);
             }
 
-            mapper.Map<InvoiceModel, Invoice>(invoiceModel, invoice);          
+            mapper.Map<InvoiceSaveModel, Invoice>(invoiceSaveModel, invoice);
+
+            // Calculate Line Amount and Total Amount
+            decimal total = 0;
+            foreach (var line in invoice.InvoiceLines)
+            {
+                line.LineAmount = line.Quantity * line.UnitPrice;
+                line.Amount = line.LineAmount;
+                total += line.LineAmount;
+            }
+
+            invoice.TotalAmount = total;
 
             dbContext.SaveChanges();
         }
 
-        public async Task<List<InvoiceModel>> GetAllInvoicesAsync()
+        public async Task<List<InvoiceGetModel>> GetAllInvoicesAsync()
         {
             var invoices = await dbContext.Invoices.ToListAsync();
 
-            var getInvoices = mapper.Map<List<Invoice>, List<InvoiceModel>>(invoices);                    
+            var getInvoices = mapper.Map<List<Invoice>, List<InvoiceGetModel>>(invoices);                    
 
             return getInvoices;
         }
 
-        public async Task<InvoiceModel> GetInvoiceByNumberAsync(string invoiceNumber)
+        public async Task<InvoiceGetModel> GetInvoiceByNumberAsync(string invoiceNumber)
         {
             if (string.IsNullOrEmpty(invoiceNumber))
                 throw new BusinessException(Constants.ErrorCode.InvalidInvoiceNumber, Constants.Errors.InvalidInvoiceNumber);
 
             var invoice = await dbContext.Invoices.Where(x => x.InvoiceNumber == invoiceNumber).FirstOrDefaultAsync();
 
-            var getInvoices = mapper.Map<Invoice, InvoiceModel>(invoice);
+            var getInvoices = mapper.Map<Invoice, InvoiceGetModel>(invoice);
 
             return getInvoices;
         }

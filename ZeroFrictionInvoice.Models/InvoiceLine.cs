@@ -10,9 +10,9 @@ namespace ZeroFrictionInvoice.Models
 {
     public class InvoiceLine
     {          
-        public int Amount { get; set; }
+        public decimal Amount { get; set; }
         public int Quantity { get; set; }
-        public int UnitPrice { get; set; }
-        public int LineAmount { get; set; }        
+        public decimal UnitPrice { get; set; }
+        public decimal LineAmount { get; set; }        
     }
 }
